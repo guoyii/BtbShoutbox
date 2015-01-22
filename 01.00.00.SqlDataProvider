@@ -1,0 +1,175 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/** Create Table **/
+
+if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_BtbShoutbox]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+	BEGIN
+		CREATE TABLE {databaseOwner}[{objectQualifier}BTB_BtbShoutbox]
+		(
+			[ModuleID] [int] NOT NULL,
+			[ItemID] [int] NOT NULL IDENTITY(1, 1),
+			[Message] [ntext] NOT NULL,
+			[Username] nvarchar(255) NOT NULL,
+			[CreatedDate] [datetime] NOT NULL
+		)
+
+		ALTER TABLE {databaseOwner}[{objectQualifier}BTB_BtbShoutbox] ADD CONSTRAINT [PK_{objectQualifier}BTB_BtbShoutbox] PRIMARY KEY CLUSTERED  ([ItemID])
+		CREATE NONCLUSTERED INDEX [IX_{objectQualifier}BTB_BtbShoutbox] ON {databaseOwner}[{objectQualifier}BTB_BtbShoutbox] ([ModuleID])
+
+		ALTER TABLE {databaseOwner}[{objectQualifier}BTB_BtbShoutbox] WITH NOCHECK ADD CONSTRAINT [FK_{objectQualifier}BTB_BtbShoutbox_{objectQualifier}Modules] FOREIGN KEY ([ModuleID]) REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleID]) ON DELETE CASCADE NOT FOR REPLICATION
+	END
+GO
+
+
+/** Drop Existing Stored Procedures **/
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_GetBtbShoutboxs]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutboxs
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_GetBtbShoutboxsUpdates]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutboxsUpdates
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_GetBtbShoutbox]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutbox
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_AddBtbShoutbox]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_AddBtbShoutbox
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_UpdateBtbShoutbox]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_UpdateBtbShoutbox
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_DeleteBtbShoutbox]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_DeleteBtbShoutbox
+GO
+
+/** Create Stored Procedures **/
+
+
+create procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutboxs
+
+	@ModuleId int,
+	@limit int
+
+as
+
+set rowcount @limit
+
+select ModuleId,
+       ItemId,
+       Message,
+       Username,
+       CreatedDate
+from {objectQualifier}BTB_BtbShoutbox
+where  ModuleId = @ModuleId
+order by ItemId DESC
+
+set rowcount 0
+
+GO
+
+
+create procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutboxsUpdates
+
+	@ModuleId int,
+	@lastItemId int
+
+as
+
+select ModuleId,
+       ItemId,
+       Message,
+       Username,
+       CreatedDate
+from {objectQualifier}BTB_BtbShoutbox
+where  ModuleId = @ModuleId and ItemId > @lastItemId
+GO
+
+create procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutbox
+
+	@ModuleId int,
+    @ItemId int
+
+as
+
+select ModuleId,
+       ItemId,
+       Message,
+       Username,
+       CreatedDate
+from {objectQualifier}BTB_BtbShoutbox
+where  ModuleId = @ModuleId
+and ItemId = @ItemId
+GO
+
+
+create procedure {databaseOwner}{objectQualifier}BTB_AddBtbShoutbox
+
+	@ModuleId       int,
+	@Message        ntext,
+	@Username		nvarchar(255)
+
+as
+
+insert into {objectQualifier}BTB_BtbShoutbox (
+	ModuleId,
+	Message,
+	Username,
+	CreatedDate
+) 
+values (
+	@ModuleId,
+	@Message,
+	@Username,
+	getdate()
+)
+
+GO
+
+create procedure {databaseOwner}{objectQualifier}BTB_UpdateBtbShoutbox
+
+	@ModuleId       int,
+    @ItemId         int,
+	@Message        ntext,
+	@Username		nvarchar(255)
+
+as
+
+update {objectQualifier}BTB_BtbShoutbox
+set    Message       = @Message,
+       Username		 = @Username,
+       CreatedDate   = getdate()
+where  ModuleId = @ModuleId
+and    ItemId = @ItemId
+
+GO
+
+create procedure {databaseOwner}{objectQualifier}BTB_DeleteBtbShoutbox
+
+	@ModuleId       int,
+    @ItemId         int
+
+as
+
+delete
+from   {objectQualifier}BTB_BtbShoutbox
+where  ModuleId = @ModuleId
+and    ItemId = @ItemId
+
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

@@ -1,0 +1,28 @@
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_GetBtbArchivedShoutboxes]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_GetBtbArchivedShoutboxes
+GO
+
+
+create procedure {databaseOwner}{objectQualifier}BTB_GetBtbArchivedShoutboxes
+
+	@ModuleId int,
+	@itemId int,
+	@limit int
+
+as
+
+set rowcount @limit
+
+select ModuleId,
+       ItemId,
+       Message,
+       Username,
+       CreatedDate,
+       Email
+from {objectQualifier}BTB_BtbShoutbox
+where  ModuleId = @ModuleId and ItemId < @itemId
+order by ItemId DESC
+
+set rowcount 0
+
+GO

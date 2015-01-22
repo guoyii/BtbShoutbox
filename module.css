@@ -1,0 +1,120 @@
+.shoutMessageInput{
+margin:0px 0px 10px 12px;
+}
+
+.shoutMessageInput textarea{
+width:85%;
+margin-bottom:10px;
+}
+
+.shoutMessageList{
+margin:0px;
+padding:0px;
+width:520px;
+}
+
+.shoutMessageList li{
+list-style-type: none;
+display:block;
+margin:0px 0px 6px 0px;
+padding:3px;
+border:1px solid #eee;
+clear:both;
+}
+
+.shoutUsername
+{
+font-weight:900;
+vertical-align:middle;
+padding-left:10px;
+border:0px solid blue;
+}
+
+.shoutAge
+{
+font-size:93%;
+border:0px solid green;
+vertical-align:bottom;
+}
+
+.shoutMessageInput
+{
+margin-bottom:10px;	
+}
+
+.shoutMessageInput #refreshLink
+{
+display:block;
+margin-top:10px;	
+}
+
+.shoutMessage
+{
+background:#eee;
+padding: 3px;
+margin:6px 0px 0px 0px;
+}
+
+.shoutUsername img{
+float:left;
+}
+
+.shoutDisplayOrder
+{
+}
+
+.deleteShout
+{
+	float:right;
+}
+
+.BtbShoutVoteSpan
+{
+margin:0px 0px 0px 10px;
+color:#444;
+}
+
+.hypBtbShoutVoteUp
+{
+margin:0px 2px;
+}
+
+.hypBtbShoutVoteDown
+{
+margin:0px 2px;
+}
+
+.BtbShoutResult
+{
+margin:0px 0px 0px 2px;
+color:#000;
+}
+
+.BtbShoutResult img{
+margin:0px 3px 0px 0px;
+}
+
+.BtbShoutResultCaption{
+margin:0px 5px;
+color:#000;
+}
+
+#profanityAlert,
+#voteFloodAlert
+{display:none;} 
+
+.shoutWarningMessage
+{
+    font-weight:400;
+    font-size:14px;
+    float:left;
+    margin:10px 0px 0px 15px;
+    width:450px;
+}
+
+/* Overlay */
+#simplemodal-overlay {background-color:#000; cursor:wait;}
+
+#simplemodal-container {height:50px; width:530px; color:#bbb; background-color:#fff; border:4px solid #444; padding:12px;}
+#simplemodal-container a.modalCloseImg {background:url(img/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+#simplemodal-container #basic-modal-content {padding:8px;}

@@ -1,0 +1,6 @@
+<div>
+[USERNAME] said ([SHOUTAGE])
+</div>
+<div>
+[MESSAGE]
+</div>

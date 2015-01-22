@@ -1,0 +1,60 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/** Drop FAQs Table **/
+
+ALTER TABLE {databaseOwner}[{objectQualifier}BTB_BtbShoutbox] DROP CONSTRAINT [FK_{objectQualifier}BTB_BtbShoutbox_{objectQualifier}Modules]
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}BTB_BtbShoutbox] DROP CONSTRAINT [PK_{objectQualifier}BTB_BtbShoutbox]
+GO
+
+DROP INDEX {databaseOwner}[{objectQualifier}BTB_BtbShoutbox].[IX_{objectQualifier}BTB_BtbShoutbox]
+GO
+
+DROP TABLE {databaseOwner}[{objectQualifier}BTB_BtbShoutbox]
+GO
+
+/** Drop Stored Procedures **/
+
+
+drop procedure {databaseOwner}{objectQualifier}BTB_ShoutBox_PurgeOldShouts
+GO
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}BTB_GetBtbShoutboxs]
+GO
+
+DROP PROCEDURE {databaseOwner}{objectQualifier}BTB_GetBtbShoutboxsUpdates
+GO
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}BTB_GetBtbShoutbox]
+GO
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}BTB_AddBtbShoutbox]
+GO
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}BTB_UpdateBtbShoutbox]
+GO
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}BTB_DeleteBtbShoutbox]
+GO
+
+drop procedure {databaseOwner}{objectQualifier}BTB_GetBtbArchivedShoutboxes
+go
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}BTB_ShoutBox_VoteUp]
+GO
+
+drop procedure {databaseOwner}{objectQualifier}BTB_ShoutBox_VoteDown
+go
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

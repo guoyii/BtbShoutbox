@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblTemplate.Text" xml:space="preserve">
+    <value>Skabelon</value>
+  </data>
+  <data name="lblTemplate.Help" xml:space="preserve">
+    <value>Giver dig mulighed for at give en brugerdefineret skabelon til visning af poster.</value>
+  </data>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>BtbShoutbox Indstillinger</value>
+  </data>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>Om BtbShoutbox Indstillinger</value>
+  </data>
+  <data name="lblFilterProfanity.Help" xml:space="preserve">
+    <value>Filtrerer chatbeskeder til at fjerne bandeord fra indholdet</value>
+  </data>
+  <data name="lblFilterProfanity.Text" xml:space="preserve">
+    <value>Filter Blasfemi</value>
+  </data>
+  <data name="lblItemLimit.Help" xml:space="preserve">
+    <value>Definerer det seneste antal meddelelser skal vises i shoutbox</value>
+  </data>
+  <data name="lblItemLimit.Text" xml:space="preserve">
+    <value>Elementbegrænsning</value>
+  </data>
+  <data name="lblAutoRefresh.Help" xml:space="preserve">
+    <value>Hvis markeret UI søger automatisk efter nye shout beskeder og opdatere uden at brugeren til at klikke på Opdater link.</value>
+  </data>
+  <data name="lblAutoRefresh.Text" xml:space="preserve">
+    <value>Auto Refresh</value>
+  </data>
+  <data name="lblOnlyRegistered.Help" xml:space="preserve">
+    <value>Hvis markeret kun registrerede brugere af portalen kan råbe beskeder.</value>
+  </data>
+  <data name="lblOnlyRegistered.Text" xml:space="preserve">
+    <value>Registrerede brugere Kun</value>
+  </data>
+  <data name="DefaultTemplate.Text" xml:space="preserve">
+    <value>&amp;lt;div&amp;gt; &amp;lt;span class=&amp;quot;shoutUsername&amp;quot;&amp;gt; [Gravatar] [brugernavn] &amp;lt;/ span&amp;gt; &amp;lt;span class=&amp;quot;shoutAge&amp;quot;&amp;gt; sagde ([SHOUTAGE]) &amp;lt;/ span&amp;gt; &amp;lt;span&amp;gt; [STEMMER] &amp;lt;/ span&amp;gt; &amp;lt;</value>
+  </data>
+  <data name="lblEmailAdmin.Help" xml:space="preserve">
+    <value>E-mail-adresse for at sende besked til slår noget op.</value>
+  </data>
+  <data name="lblEmailAdmin.Text" xml:space="preserve">
+    <value>Admin Email Adresse</value>
+  </data>
+  <data name="lblCharacterLimit.Help" xml:space="preserve">
+    <value>Definerer det maksimale antal tegn, som en besked kan indeholde, noget over denne værdi er afkortet til nærmeste hele ord.</value>
+  </data>
+  <data name="lblCharacterLimit.Text" xml:space="preserve">
+    <value>Besked Længde Limit</value>
+  </data>
+  <data name="lblTopOfModule.Help" xml:space="preserve">
+    <value>Hvis markeret vises indtastning øverst på modulet.</value>
+  </data>
+  <data name="lblTopOfModule.Text" xml:space="preserve">
+    <value>Besked Input på Top</value>
+  </data>
+  <data name="lblUserCaption.Help" xml:space="preserve">
+    <value>Definerer det navn, som er vist for godkendt bruger besked</value>
+  </data>
+  <data name="lblUserCaption.Text" xml:space="preserve">
+    <value>Bruger Billedtekst</value>
+  </data>
+  <data name="rbDisplayName.Text" xml:space="preserve">
+    <value>Vist navn</value>
+  </data>
+  <data name="rbUsername.Text" xml:space="preserve">
+    <value>Brugernavn</value>
+  </data>
+  <data name="lblDisplayOlderLink.Help" xml:space="preserve">
+    <value>Når tjek et link vil blive vist for at tillade brugeren at indlæse ældre beskeder</value>
+  </data>
+  <data name="lblDisplayOlderLink.Text" xml:space="preserve">
+    <value>Vis Ældre beskeder</value>
+  </data>
+  <data name="lblPurgeAgeLimit.Help" xml:space="preserve">
+    <value>Når dette er sat til et positivt tal vil beskeder ældre end denne værdi vil blive slettet fra databasen.</value>
+  </data>
+  <data name="lblPurgeAgeLimit.Text" xml:space="preserve">
+    <value>Slet Gamle indlæg (dage)</value>
+  </data>
+  <data name="lblFloodControlEnabled.Help" xml:space="preserve">
+    <value>Stop brugere fra at stemme om det samme emne flere gange,</value>
+  </data>
+  <data name="lblFloodControlEnabled.Text" xml:space="preserve">
+    <value>Aktiver Afstemning Flood Control</value>
+  </data>
+  <data name="lnkReloadDefault.Text" xml:space="preserve">
+    <value>Reload standardskabelon</value>
+  </data>
+</root>

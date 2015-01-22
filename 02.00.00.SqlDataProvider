@@ -1,0 +1,198 @@
+﻿if not exists (select column_name from INFORMATION_SCHEMA.columns where table_name = '{objectQualifier}BTB_BtbShoutbox' and column_name = 'vote')
+ begin
+   alter table {databaseOwner}[{objectQualifier}BTB_BtbShoutbox] 
+	 add vote int not null default 0
+ end
+go
+
+
+if not exists (select column_name from INFORMATION_SCHEMA.columns where table_name = '{objectQualifier}BTB_BtbShoutbox' and column_name = 'replyToId')
+ begin
+   alter table {databaseOwner}[{objectQualifier}BTB_BtbShoutbox] 
+	 add replyToId int null default null
+ end
+go
+
+
+/** Drop Existing Stored Procedures **/
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_GetBtbShoutboxs]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutboxs
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_GetBtbShoutboxsUpdates]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutboxsUpdates
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_GetBtbShoutbox]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutbox
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_AddBtbShoutbox]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_AddBtbShoutbox
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_UpdateBtbShoutbox]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_UpdateBtbShoutbox
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_DeleteBtbShoutbox]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_DeleteBtbShoutbox
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_ShoutBox_VoteUp]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_ShoutBox_VoteUp
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_ShoutBox_VoteDown]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_ShoutBox_VoteDown
+GO
+
+/** Create Stored Procedures **/
+
+
+create procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutboxs
+
+	@ModuleId int,
+	@limit int
+
+as
+
+set rowcount @limit
+
+select *
+from {objectQualifier}BTB_BtbShoutbox
+where  ModuleId = @ModuleId
+order by ItemId DESC
+
+set rowcount 0
+
+GO
+
+
+create procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutboxsUpdates
+
+	@ModuleId int,
+	@lastItemId int
+
+as
+
+select *
+from {objectQualifier}BTB_BtbShoutbox
+where  ModuleId = @ModuleId and ItemId > @lastItemId
+GO
+
+create procedure {databaseOwner}{objectQualifier}BTB_GetBtbShoutbox
+
+	@ModuleId int,
+    @ItemId int
+
+as
+
+select *
+from {objectQualifier}BTB_BtbShoutbox
+where  ModuleId = @ModuleId
+and ItemId = @ItemId
+GO
+
+
+create procedure {databaseOwner}{objectQualifier}BTB_AddBtbShoutbox
+
+	@ModuleId       int,
+	@Message        ntext,
+	@Username		nvarchar(255),
+	@Email			nvarchar(255),
+	@ReplyToId		int
+
+as
+
+insert into {objectQualifier}BTB_BtbShoutbox (
+	ModuleId,
+	Message,
+	Username,
+	CreatedDate,
+	Email,
+	replyToId
+) 
+values (
+	@ModuleId,
+	@Message,
+	@Username,
+	getdate(),
+	@Email,
+	@ReplyToId
+)
+
+GO
+
+create procedure {databaseOwner}{objectQualifier}BTB_UpdateBtbShoutbox
+
+	@ModuleId       int,
+    @ItemId         int,
+	@Message        ntext,
+	@Username		nvarchar(255),
+	@Email			nvarchar(255)
+
+as
+
+update {objectQualifier}BTB_BtbShoutbox
+set    Message       = @Message,
+       Username		 = @Username,
+       CreatedDate   = getdate(),
+       Email		 = @Email
+where  ModuleId = @ModuleId
+and    ItemId = @ItemId
+
+GO
+
+create procedure {databaseOwner}{objectQualifier}BTB_DeleteBtbShoutbox
+
+	@ModuleId       int,
+    @ItemId         int
+
+as
+
+delete
+from   {objectQualifier}BTB_BtbShoutbox
+where  ModuleId = @ModuleId
+and    ItemId = @ItemId
+
+GO
+
+
+create procedure {databaseOwner}{objectQualifier}BTB_ShoutBox_VoteUp
+(
+ @itemId int
+)
+as
+
+set nocount on
+
+ update {objectQualifier}BTB_BtbShoutbox
+	set vote = vote + 1
+	where itemId = @itemId
+
+	select vote from {objectQualifier}BTB_BtbShoutbox where itemId=@itemId
+
+return
+
+go
+
+create procedure {databaseOwner}{objectQualifier}BTB_ShoutBox_VoteDown
+(
+ @itemId int
+)
+as
+
+set nocount on
+
+ update {objectQualifier}BTB_BtbShoutbox
+	set vote = vote - 1
+	where itemId = @itemId
+
+
+ select vote from {objectQualifier}BTB_BtbShoutbox where itemId=@itemId
+
+return
+
+go

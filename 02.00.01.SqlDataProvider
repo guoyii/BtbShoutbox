@@ -1,0 +1,20 @@
+﻿if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}BTB_ShoutBox_PurgeOldShouts]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}BTB_ShoutBox_PurgeOldShouts
+GO
+
+create procedure {databaseOwner}{objectQualifier}BTB_ShoutBox_PurgeOldShouts
+(
+ @moduleId int,
+ @shoutAge int
+)
+as
+
+set nocount on
+
+ delete {objectQualifier}BTB_BtbShoutbox 
+	where moduleId = @moduleId and 
+	datediff(dd, createdDate, getDate()) > @shoutAge
+	
+return
+
+go
